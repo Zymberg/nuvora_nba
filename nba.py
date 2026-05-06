@@ -544,10 +544,27 @@ def sg(v): return f"color:{GREEN};font-weight:600" if v > 5 else (
     f"color:{RED};font-weight:600" if v < -5 else f"color:{MUTED}")
 
 
+# st.dataframe(
+#     disp.style.applymap(sp, subset=["Priority"]).applymap(ss, subset=["Priority Score"]).applymap(sg, subset=[
+#         "Growth (MoM %)"]).format({"Monthly Revenue ($)": "${:,.0f}", "Priority Score": "{:.1f}", "Growth (MoM %)": "{:+.1f}%"}),
+#     use_container_width=True, height=420
+# )
+styled_disp = (
+    disp.style
+    .map(sp, subset=["Priority"])
+    .map(ss, subset=["Priority Score"])
+    .map(sg, subset=["Growth (MoM %)"])
+    .format({
+        "Monthly Revenue ($)": "${:,.0f}",
+        "Priority Score": "{:.1f}",
+        "Growth (MoM %)": "{:+.1f}%"
+    })
+)
+
 st.dataframe(
-    disp.style.applymap(sp, subset=["Priority"]).applymap(ss, subset=["Priority Score"]).applymap(sg, subset=[
-        "Growth (MoM %)"]).format({"Monthly Revenue ($)": "${:,.0f}", "Priority Score": "{:.1f}", "Growth (MoM %)": "{:+.1f}%"}),
-    use_container_width=True, height=420
+    styled_disp,
+    use_container_width=True,
+    height=420
 )
 st.markdown(
     f"<div style='font-size:11px;color:{MUTED};margin-top:6px;'>{len(disp)} accounts</div>", unsafe_allow_html=True)
