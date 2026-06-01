@@ -114,7 +114,9 @@ st.markdown(f"""
   span[data-baseweb="tag"] {{ background-color: #1A3A55 !important; color: {TEXT} !important; margin: 2px !important; }}
   span[data-baseweb="tag"] span {{ color: {TEXT} !important; }}
   input, textarea, select {{ color: {TEXT} !important; background: {BG} !important; }}
-
+  [data-testid="column"] {{
+    overflow: visible !important;
+  }}
   /* ── KPI cards — wide, airy ── */
   .kpi-row {{ display: flex; gap: 16px; margin-bottom: 28px; }}
   .kpi-card {{
