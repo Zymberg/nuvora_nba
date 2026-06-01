@@ -63,13 +63,25 @@ st.markdown(f"""
     background: {CARD};
     border: 1px solid {BORDER};
     border-radius: 8px;
-    padding: 16px 24px;
+
+    padding: 20px 24px;
     margin-bottom: 28px;
-    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+
+    overflow: visible !important;
   }}
   .nv-filter-label {{
-    font-size: 10px; font-weight: 700; color: {MUTED};
-    text-transform: uppercase; letter-spacing: 1.5px;
+    font-size: 10px;
+    font-weight: 700;
+    color: {MUTED};
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
     white-space: nowrap;
   }}
 
@@ -78,15 +90,28 @@ st.markdown(f"""
     background-color: {BG} !important;
     border-color: {BORDER} !important;
     color: {TEXT} !important;
-    min-height: 36px !important;
+    min-height: 56px !important;
+    height: auto !important;
+    align-items: flex-start !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
   }}
+  div[data-baseweb="select"] [role="listbox"] {{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+
+    max-height: none !important;
+    overflow: visible !important;
+  }}
+
   div[data-baseweb="popover"], div[data-baseweb="menu"], ul[data-baseweb="menu"] {{
     background-color: {CARD} !important;
     border: 1px solid {BORDER} !important;
   }}
   div[data-baseweb="option"] {{ background-color: {CARD} !important; color: {TEXT} !important; }}
   div[data-baseweb="option"]:hover {{ background-color: {BORDER} !important; }}
-  span[data-baseweb="tag"] {{ background-color: #1A3A55 !important; color: {TEXT} !important; }}
+  span[data-baseweb="tag"] {{ background-color: #1A3A55 !important; color: {TEXT} !important; margin: 2px !important; }}
   span[data-baseweb="tag"] span {{ color: {TEXT} !important; }}
   input, textarea, select {{ color: {TEXT} !important; background: {BG} !important; }}
 
